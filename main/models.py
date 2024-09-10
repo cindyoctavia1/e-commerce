@@ -4,8 +4,8 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     price = models.IntegerField()
     description = models.TextField()
-    mood_intensity = models.IntegerField()
+    # mood_intensity = models.IntegerField()
 
-    @property
-    def is_mood_strong(self):
-        return self.mood_intensity > 5
+    # @property
+    # def is_mood_strong(self):
+    #     return self.mood_intensity > 5
