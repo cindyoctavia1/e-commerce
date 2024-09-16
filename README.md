@@ -1,4 +1,4 @@
-link pws: https://pbp.cs.ui.ac.id/web/project/cindy.octavia/ecommerce
+link pws: https://cindy-octavia-ecommerce.pbp.cs.ui.ac.id/
 
 •Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
     1.	Membuat sebuah proyek Django baru.
