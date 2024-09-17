@@ -82,7 +82,7 @@ Tambahkan 4 fungsi views baru untuk melihat objek yang sudah ditambahkan dalam f
 Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
 -Masukkan import di urls.py di foler main yang berisi nama ke 4 fungsi yang sudah dibuat tadi dan tambahkan path URL ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi.
 
-![alt text](C:\Users\Cindy\OneDrive\Pictures\Screenshots\Screenshot 2024-09-16 204951.png?raw=true)
+![alt text](https://drive.google.com/file/d/1L_QkuU8iAXPpgZYdqu4AvNwgjbP7kTVQ/view?usp=drive_link?raw=true)
 Source:
 https://www.localstartupfest.id/faq/perbedaan-xml-dan-json/
 https://id.linux-console.net/?p=28432#gsc.tab=0
