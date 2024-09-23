@@ -82,6 +82,7 @@ Tambahkan 4 fungsi views baru untuk melihat objek yang sudah ditambahkan dalam f
 Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
 -Masukkan import di urls.py di foler main yang berisi nama ke 4 fungsi yang sudah dibuat tadi dan tambahkan path URL ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi.
 
+folder gdrive screenshot postman: https://drive.google.com/drive/folders/1yN0RS-7T3Qaouf2V9w9LAzdGTBliys-u?usp=sharing
 Source:
 https://www.localstartupfest.id/faq/perbedaan-xml-dan-json/
 https://id.linux-console.net/?p=28432#gsc.tab=0
