@@ -205,7 +205,51 @@ Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-b
 6. membuat file css global untuk menyediakan custom styling yang diterapkan secara global di seluruh aplikasi web. lalu menerapkan styling pada berkas login.html, register.html, home (card_info.html, card_product.html), create_product_entry.html dan edit_product.html
 
 
+TUGAS 6
+1.Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
 
+Interaktivitas: JavaScript memungkinkan pengembang membuat elemen web yang interaktif seperti menu drop-down, slider, modal, dan formulir dinamis yang memberikan pengalaman pengguna yang lebih baik.
+
+Responsif: Dengan JavaScript, situs web bisa menjadi lebih responsif tanpa harus me-refresh halaman secara keseluruhan. Teknologi seperti AJAX memungkinkan pengambilan data dari server tanpa memuat ulang halaman.
+
+Validasi Sisi Klien: JavaScript digunakan untuk melakukan validasi pada formulir sebelum data dikirimkan ke server. Ini meningkatkan pengalaman pengguna karena kesalahan dapat ditampilkan langsung tanpa perlu menunggu respons dari server.
+
+Pengolahan Asinkron: JavaScript mendukung pemrosesan asinkron yang memungkinkan halaman web melakukan beberapa operasi secara paralel, misalnya memuat data dari server di latar belakang menggunakan API seperti fetch().
+
+2.Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+await digunakan untuk menunggu hasil dari promise, seperti hasil dari pemanggilan fungsi fetch() yang mengembalikan promise. Ketika fetch() dipanggil, ia memulai request jaringan dan langsung mengembalikan promise yang akan diselesaikan ketika respons diterima. Dengan await, kita menunggu hingga promise tersebut selesai dan hasilnya (respon dari server) bisa langsung digunakan.
+
+Jika tidak menggunakan await, kode kita tidak akan menunggu respons server. Akibatnya, kita bisa mencoba mengakses data yang belum ada, karena fetch() mengembalikan promise, bukan data aktual. Ini bisa menyebabkan bug atau error karena kode akan berjalan lebih cepat dari penerimaan data.
+
+3.Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+Pada aplikasi Django, CSRF (Cross-Site Request Forgery) token digunakan untuk melindungi aplikasi dari serangan CSRF. Token ini harus disertakan pada setiap request POST yang berasal dari form di dalam template Django. Namun, jika kita menggunakan AJAX POST, secara default, request tersebut tidak menyertakan CSRF token, sehingga Django akan memblokirnya.
+
+Decorator csrf_exempt digunakan untuk menonaktifkan proteksi CSRF pada view tertentu. Ini diperlukan ketika kita menggunakan AJAX POST dan tidak ingin memverifikasi CSRF token. Namun, menggunakan csrf_exempt juga berarti kita menurunkan tingkat keamanan pada view tersebut, sehingga harus berhati-hati dalam penggunaannya, memastikan bahwa view tersebut hanya diakses dengan cara yang aman (misalnya, hanya oleh pengguna yang sah).
+
+4.Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+
+Keamanan: Jika pembersihan data hanya dilakukan di frontend, aplikasi akan lebih rentan terhadap serangan atau manipulasi data. Pengguna dapat memodifikasi data sebelum dikirim ke server (misalnya dengan mengubah HTML atau JavaScript). Dengan memvalidasi dan membersihkan data di backend, aplikasi terlindung dari input yang berbahaya seperti XSS (Cross-Site Scripting) atau SQL Injection.
+
+Kontrol penuh: Backend memiliki kendali penuh atas validasi dan pembersihan data, memastikan bahwa hanya data yang sah yang masuk ke database. Frontend bisa menjadi lapisan pertama untuk membantu pengalaman pengguna, tetapi backend memastikan aturan diterapkan dengan konsisten.
+
+Pengurangan duplikasi kode: Jika validasi hanya dilakukan di frontend, kita harus menuliskan logika yang sama di backend untuk memastikan bahwa data yang masuk ke server adalah valid. Dengan menempatkan validasi di backend, kita menghindari duplikasi logika tersebut.
+
+5.Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+
+Ubah kode cards data mood agar dapat mendukung AJAX GET:
+Mengimpor csrf_exempt dan require_POST ,kemudian membuat fungsi baru pada views.py dengan nama add_mood_entry_ajax, lalu menambahkan routing fungsi tersebut pada urls.py. Di main.html, buat fungsi JavaScript getMoodEntries() untuk fetch data dari URL JSON (/get-mood/), kemudian gunakan refreshMoodEntries() untuk menampilkan data mood ke dalam elemen dengan ID mood_entry_cards.
+
+AJAX GET (Pengambilan Data Mood):
+Menambahkan endpoint di Django views untuk mengembalikan data mood pengguna yang sedang login menggunakan filter request.user.Lalu membuat fungsi refreshProductEntries yang menggunakan fetch() untuk melakukan GET request ke endpoint tersebut. Data yang diterima dari server kemudian di-render secara dinamis di halaman tanpa perlu reload menggunakan JavaScript dan DOM manipulation.
+
+Membuat Modal untuk Menambahkan Mood:
+Menggunakan Tailwind CSS untuk mendesain modal. Modal akan terbuka saat tombol ditekan dengan memanggil fungsi JavaScript showModal().Di dalam modal terdapat form yang berisi input name, price, dan description.
+
+AJAX POST: Menambahkan Mood:
+Membuat endpoint baru di views Django dengan path /create-ajax/ yang menerima POST request untuk menambahkan data product baru ke dalam basis data.Form di dalam modal terhubung dengan fungsi JavaScript addProductEntry() yang menggunakan fetch() untuk melakukan POST request ke path /create-ajax/.Jika penambahan data berhasil, form akan di-reset dan modal akan ditutup menggunakan hideModal(). Jika gagal, pesan error ditampilkan di dalam modal.
+
+Refresh Halaman Utama Secara Asinkronus:
+Setelah product berhasil ditambahkan, refreshProductEntries() dipangil ulang untuk memuat daftar product terbaru tanpa melakukan reload halaman.
 
 
 
